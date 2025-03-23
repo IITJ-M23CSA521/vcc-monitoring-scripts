@@ -82,7 +82,7 @@ while true; do
         echo "$(date +"%Y-%m-%d %H:%M:%S") - Temp CPU Usage: ${temp_cpu_usage}%" | tee -a "$LOGFILE"
 
         if (( temp_cpu_usage < low_cpu_threshold )); then
-            echo "✅ CPU usage normal. Scaling down..." | tee -a "$LOGFILE"
+            echo "CPU usage normal. Scaling down..." | tee -a "$LOGFILE"
 
             gcloud compute instance-groups managed resize node-instance-group --size=1 --zone=us-west4-b 2>&1 | tee -a "$LOGFILE"
 
